@@ -13,9 +13,9 @@ The scoring system is rather simple:
 1. If you have 40 and you win the ball you win the game, however there are special rules.
 
 1. If both have 40 the players are deuce. 
-1.1. If the game is in deuce, the winner of a ball will have advantage and game ball. 
-1.2. If the player with advantage wins the ball he wins the game 
-1.3. If the player without advantage wins they are back at deuce.
+*1.1 If the game is in deuce, the winner of a ball will have advantage and game ball. 
+*1.2 If the player with advantage wins the ball he wins the game 
+*1.3. If the player without advantage wins they are back at deuce.
 
 1. A game is won by the first player to have won at least four points in total and at least two points more than the opponent.
 
