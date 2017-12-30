@@ -17,47 +17,57 @@ public class Game {
     public String getPrettyScore() {
         ScoreNames playerOne = ScoreNames.getByPoint(score.getRaw()[0]);
         ScoreNames playerTwo = ScoreNames.getByPoint(score.getRaw()[1]);
+        setScores(playerOne, playerTwo);
 
-        score.setPlayerOne(playerOne);
-        score.setPlayerTwo(playerTwo);
-
-        if (playerOne.getPoint().equals(playerTwo.getPoint())){
-            setDeuce(playerOne);
-        } else if(playerOne.getPoint() >=4 || playerTwo.getPoint()>=4) {
-            setWin(playerOne, playerTwo);
+        if (isDeuce(playerOne, playerTwo)){
+            setScores(ScoreNames.DEUCE, ScoreNames.DEUCE);
+            if(playerOne.getPoint() < 3) {
+                setScores(playerOne, ScoreNames.ALL);
+            }
+        } else {
+            if(isTie(playerOne, playerTwo)) {
+                if (playerOneHasMaxPoint(playerOne, playerTwo)) {
+                    setScores(ScoreNames.PLAYER_1_ADVANTAGE, ScoreNames.PLAYER_1_ADVANTAGE);
+                } else {
+                    setScores(ScoreNames.PLAYER_2_ADVANTAGE, ScoreNames.PLAYER_2_ADVANTAGE);
+                }
+            }
+            if(isWin(playerOne, playerTwo)) {
+                if (playerOneHasMaxPoint(playerOne, playerTwo)) {
+                    setScores(ScoreNames.PLAYER_1_WIN, ScoreNames.PLAYER_1_WIN);
+                } else {
+                    setScores(ScoreNames.PLAYER_2_WIN, ScoreNames.PLAYER_2_WIN);
+                }
+            }
         }
 
         return score.prettify();
     }
 
-    private void setWin(ScoreNames playerOne, ScoreNames playerTwo) {
-        Integer winnerPoints = Math.max(playerOne.getPoint(), playerTwo.getPoint());
-        if(Math.abs(playerOne.getPoint() - playerTwo.getPoint()) != 1) {
-            if (playerOne.getPoint().equals(winnerPoints)) {
-                score.setPlayerOne(ScoreNames.PLAYER_1_WIN);
-                score.setPlayerTwo(ScoreNames.PLAYER_1_WIN);
-            } else {
-                score.setPlayerOne(ScoreNames.PLAYER_2_WIN);
-                score.setPlayerTwo(ScoreNames.PLAYER_2_WIN);
-            }
-        } else {
-            if (playerOne.getPoint().equals(winnerPoints)) {
-                score.setPlayerOne(ScoreNames.PLAYER_1_ADVANTAGE);
-                score.setPlayerTwo(ScoreNames.PLAYER_1_ADVANTAGE);
-            } else {
-                score.setPlayerOne(ScoreNames.PLAYER_2_ADVANTAGE);
-                score.setPlayerTwo(ScoreNames.PLAYER_2_ADVANTAGE);
-            }
-        }
+    private boolean playerOneHasMaxPoint(ScoreNames playerOne, ScoreNames playerTwo) {
+        Integer maxPoint = Math.max(playerOne.getPoint(), playerTwo.getPoint());
+        return playerOne.getPoint().equals(maxPoint);
     }
 
-    private void setDeuce(ScoreNames playerOne) {
-        score.setPlayerOne(ScoreNames.DEUCE);
-        score.setPlayerTwo(ScoreNames.DEUCE);
-        if(playerOne.getPoint() < 3) {
-            score.setPlayerOne(playerOne);
-            score.setPlayerTwo(ScoreNames.ALL);
-        }
+    private boolean isWin(ScoreNames playerOne, ScoreNames playerTwo) {
+        return pointIsFourOrMore(playerOne, playerTwo) && (Math.abs(playerOne.getPoint() - playerTwo.getPoint()) != 1);
+    }
+
+    private boolean pointIsFourOrMore(ScoreNames playerOne, ScoreNames playerTwo) {
+        return playerOne.getPoint() >=4 || playerTwo.getPoint()>=4;
+    }
+
+    private boolean isTie(ScoreNames playerOne, ScoreNames playerTwo) {
+        return pointIsFourOrMore(playerOne, playerTwo) && (!isWin(playerOne, playerTwo));
+    }
+
+    private boolean isDeuce(ScoreNames playerOne, ScoreNames playerTwo) {
+        return playerOne.getPoint().equals(playerTwo.getPoint());
+    }
+
+    private void setScores(ScoreNames playerOne, ScoreNames playerTwo) {
+        score.setPlayerOne(playerOne);
+        score.setPlayerTwo(playerTwo);
     }
 
 }
