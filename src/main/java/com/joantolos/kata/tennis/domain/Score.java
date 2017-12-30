@@ -18,19 +18,16 @@ public class Score {
         return raw;
     }
 
-    public String getPlayerOne() {
-        return playerOne;
-    }
-
-    public String getPlayerTwo() {
-        return playerTwo;
-    }
-
     public void setPlayerOne(String playerOne) {
         this.playerOne = playerOne;
     }
 
     public void setPlayerTwo(String playerTwo) {
         this.playerTwo = playerTwo;
+    }
+
+    public String prettify() {
+        if(playerOne.equals(playerTwo)) return playerOne;
+        return playerOne + " - " + playerTwo;
     }
 }

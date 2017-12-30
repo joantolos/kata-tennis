@@ -2,6 +2,8 @@ package com.joantolos.kata.tennis;
 
 import com.joantolos.kata.tennis.domain.Score;
 
+import java.util.Objects;
+
 public class Game {
 
     private Score score;
@@ -15,11 +17,17 @@ public class Game {
     }
 
     public String getPrettyScore() {
-        if (score.getRaw()[0] == 1 && score.getRaw()[1] == 0){
+        Integer[] rawScore = score.getRaw();
+        if (rawScore[0] == 1 && rawScore[1] == 0){
             score.setPlayerOne("Fifteen");
             score.setPlayerTwo("Love");
         }
-        return score.getPlayerOne() + " - " + score.getPlayerTwo();
+        if (Objects.equals(rawScore[0], rawScore[1])){
+            score.setPlayerOne("Deuce");
+            score.setPlayerTwo("Deuce");
+        }
+
+        return score.prettify();
     }
 
 }
