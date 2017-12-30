@@ -17,12 +17,14 @@ public class Game {
     }
 
     public String getPrettyScore() {
-        Integer[] rawScore = score.getRaw();
-        if (rawScore[0] == 1 && rawScore[1] == 0){
+        Integer playerOne = score.getRaw()[0];
+        Integer playerTwo = score.getRaw()[1];
+
+        if (playerOne == 1 && playerTwo == 0){
             score.setPlayerOne("Fifteen");
             score.setPlayerTwo("Love");
         }
-        if (Objects.equals(rawScore[0], rawScore[1])){
+        if (Objects.equals(playerOne, playerTwo)){
             score.setPlayerOne("Deuce");
             score.setPlayerTwo("Deuce");
         }
