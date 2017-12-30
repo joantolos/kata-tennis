@@ -2,7 +2,7 @@ package com.joantolos.kata.tennis;
 
 import java.util.Arrays;
 
-public enum ScoreNames {
+public enum Score {
 
     DEFAULT_0(0, "Love"),
     DEFAULT_1(1, "Fifteen"),
@@ -22,7 +22,7 @@ public enum ScoreNames {
     private Integer point;
     private String name;
 
-    ScoreNames(Integer point, String name){
+    Score(Integer point, String name){
         this.point = point;
         this.name = name;
     }
@@ -35,10 +35,10 @@ public enum ScoreNames {
         return point;
     }
 
-    public static ScoreNames getByPoint(Integer targetPoint){
-        return Arrays.stream(ScoreNames.values())
-                .filter(scoreNames -> scoreNames.point.equals(targetPoint))
+    public static Score getByPoint(Integer targetPoint){
+        return Arrays.stream(Score.values())
+                .filter(score -> score.point.equals(targetPoint))
                 .findFirst()
-                .orElse(DEFAULT_0);
+                .orElse(null);
     }
 }

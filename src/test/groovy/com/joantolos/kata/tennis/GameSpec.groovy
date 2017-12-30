@@ -7,12 +7,12 @@ class GameSpec extends Specification {
     def 'Should pretty print every score combination'() {
 
         given: "A new game"
-        Game score = new Game()
+        Game game = new Game()
 
         expect: 'Should match the expected pretty score'
-        playerOneScore.times{score.scorePoint(1)}
-        playerTwoScore.times{score.scorePoint(2)}
-        score.getPrettyScore() == expectedPrettyScore
+        playerOneScore.times{game.scorePoint(1)}
+        playerTwoScore.times{game.scorePoint(2)}
+        game.getScore() == expectedPrettyScore
 
         where:
         playerOneScore  | playerTwoScore    | expectedPrettyScore
