@@ -2,12 +2,12 @@ package com.joantolos.kata.tennis
 
 import spock.lang.Specification
 
-class TennisSpec extends Specification {
+class GameSpec extends Specification {
 
     def 'Should pretty print every score combination'() {
 
         given: "A new game"
-        Tennis score = new Tennis()
+        Game score = new Game()
 
         expect: 'Should match the expected pretty score'
         playerOneScore.times{score.scorePoint(1)}
