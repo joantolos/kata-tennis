@@ -1,4 +1,4 @@
-package com.joantolos.kata.tennis.score;
+package com.joantolos.kata.tennis.core;
 
 import java.util.Objects;
 

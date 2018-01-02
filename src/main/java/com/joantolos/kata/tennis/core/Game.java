@@ -1,6 +1,6 @@
-package com.joantolos.kata.tennis;
+package com.joantolos.kata.tennis.core;
 
-import com.joantolos.kata.tennis.score.Score;
+import com.joantolos.kata.tennis.domain.Luck;
 
 public class Game {
 
@@ -14,6 +14,11 @@ public class Game {
         this.rawScore = new Integer[2];
         this.rawScore[0] = 0;
         this.rawScore[1] = 0;
+    }
+
+    public void scoreRandomPoint() {
+        Integer randomUserId = Luck.randomPointWinner();
+        rawScore[randomUserId - 1] = rawScore[randomUserId - 1] + 1;
     }
 
     public void scorePoint(Integer playerId) {

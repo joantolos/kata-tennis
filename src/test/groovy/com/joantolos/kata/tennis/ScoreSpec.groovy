@@ -1,5 +1,6 @@
 package com.joantolos.kata.tennis
 
+import com.joantolos.kata.tennis.core.Game
 import spock.lang.Specification
 
 class ScoreSpec extends Specification {
