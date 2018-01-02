@@ -13,7 +13,7 @@ public class Score {
     public static String calculate(Integer playerOnePoint, Integer playerTwoPoint, String playerOneName, String playerTwoName){
         if(Objects.equals(playerOnePoint, playerTwoPoint)) return deuce(playerOnePoint);
         if(playerOnePoint > 3 || playerTwoPoint > 3) return winOrTie(playerOnePoint, playerTwoPoint, playerOneName, playerTwoName);
-        return Score.defaultScore(playerOnePoint, playerTwoPoint);
+        return defaultScore(playerOnePoint, playerTwoPoint);
     }
 
     private static String deuce(Integer playerOnePoint) {
