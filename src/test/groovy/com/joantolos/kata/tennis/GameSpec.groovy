@@ -12,7 +12,7 @@ class GameSpec extends Specification {
         expect: 'Should match the expected pretty rawScore'
         playerOneScore.times{game.scorePoint(1)}
         playerTwoScore.times{game.scorePoint(2)}
-        game.getRawScore() == expectedPrettyScore
+        game.getPrettyScore() == expectedPrettyScore
 
         where:
         playerOneScore  | playerTwoScore    | expectedPrettyScore
