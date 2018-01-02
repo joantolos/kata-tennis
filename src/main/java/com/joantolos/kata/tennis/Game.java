@@ -20,7 +20,7 @@ public class Game {
         rawScore[playerId - 1] = rawScore[playerId - 1] + 1;
     }
 
-    public String getPrettyScore() {
+    public String getScore() {
         return Score.calculate(rawScore[0], rawScore[1], playerOneName, playerTwoName);
     }
 

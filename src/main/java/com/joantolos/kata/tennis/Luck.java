@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Luck {
 
-    public static Integer pointWinner() {
+    public static Integer randomPointWinner() {
         return new Random().nextInt(1);
     }
 }
