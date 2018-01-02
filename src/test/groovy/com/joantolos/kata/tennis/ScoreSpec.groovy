@@ -2,7 +2,7 @@ package com.joantolos.kata.tennis
 
 import spock.lang.Specification
 
-class GameSpec extends Specification {
+class ScoreSpec extends Specification {
 
     def 'Should pretty print every score combination'() {
 
