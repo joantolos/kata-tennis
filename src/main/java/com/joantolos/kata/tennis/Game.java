@@ -15,7 +15,8 @@ public class Game {
     }
 
     public String getScore() {
-
-        return "";
+        String playerOneScore = ScoreName.getDefault(raw[0]);
+        String playerTwoScore = ScoreName.getDefault(raw[1]);
+        return playerOneScore + " - " + playerTwoScore;
     }
 }
