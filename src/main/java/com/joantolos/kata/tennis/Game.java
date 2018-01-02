@@ -1,22 +1,27 @@
 package com.joantolos.kata.tennis;
 
+import com.joantolos.kata.tennis.score.Score;
+
 public class Game {
 
-    private Integer[] raw;
+    private Integer[] rawScore;
+    private String playerOneName;
+    private String playerTwoName;
 
-    public Game() {
-        this.raw = new Integer[2];
-        this.raw[0] = 0;
-        this.raw[1] = 0;
+    public Game(String playerOneName, String playerTwoName) {
+        this.playerOneName = playerOneName;
+        this.playerTwoName = playerTwoName;
+        this.rawScore = new Integer[2];
+        this.rawScore[0] = 0;
+        this.rawScore[1] = 0;
     }
 
     public void scorePoint(Integer playerId) {
-        raw[playerId - 1] = raw[playerId - 1] + 1;
+        rawScore[playerId - 1] = rawScore[playerId - 1] + 1;
     }
 
-    public String getScore() {
-        String playerOneScore = ScoreName.getDefault(raw[0]);
-        String playerTwoScore = ScoreName.getDefault(raw[1]);
-        return playerOneScore + " - " + playerTwoScore;
+    public String getRawScore() {
+        return Score.calculate(rawScore[0], rawScore[1], playerOneName, playerTwoName);
     }
+
 }
