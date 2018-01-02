@@ -7,8 +7,10 @@ public class Game {
     private Integer[] rawScore;
     private String playerOneName;
     private String playerTwoName;
+    private UserInterface ui;
 
-    public Game(String playerOneName, String playerTwoName) {
+    public Game(UserInterface ui, String playerOneName, String playerTwoName) {
+        this.ui = ui;
         this.playerOneName = playerOneName;
         this.playerTwoName = playerTwoName;
         this.rawScore = new Integer[2];
@@ -16,9 +18,10 @@ public class Game {
         this.rawScore[1] = 0;
     }
 
-    public void scoreRandomPoint() {
+    public Integer scoreRandomPoint() {
         Integer randomUserId = Luck.randomPointWinner();
         rawScore[randomUserId - 1] = rawScore[randomUserId - 1] + 1;
+        return randomUserId;
     }
 
     public void scorePoint(Integer playerId) {
@@ -29,4 +32,15 @@ public class Game {
         return Score.calculate(rawScore[0], rawScore[1], playerOneName, playerTwoName);
     }
 
+    public void start() {
+        do {
+            Integer winnerPointPlayerId = scoreRandomPoint();
+            if (winnerPointPlayerId == 1) {
+                ui.print("Point " + playerOneName);
+            } else {
+                ui.print("Point " + playerTwoName);
+            }
+            ui.print("Score: " + getScore());
+        } while (!getScore().startsWith("Win"));
+    }
 }

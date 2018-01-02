@@ -36,7 +36,7 @@ allprojects {
         afterEvaluate {
             classDirectories = files(classDirectories.files.collect {
                 fileTree(dir: it,
-                        exclude: ['com/joantolos/kata/tennis/App.java'])
+                        exclude: ['com/joantolos/kata/tennis/Tennis*'])
             })
         }
     }

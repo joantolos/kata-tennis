@@ -1,6 +1,7 @@
 package com.joantolos.kata.tennis
 
 import com.joantolos.kata.tennis.core.Game
+import com.joantolos.kata.tennis.core.UserInterface
 import spock.lang.Specification
 
 class ScoreSpec extends Specification {
@@ -8,7 +9,7 @@ class ScoreSpec extends Specification {
     def 'Should pretty print every score combination'() {
 
         given: "A new game"
-        Game game = new Game("Joan", "Finner")
+        Game game = new Game(new UserInterface(), "Joan", "Finner")
 
         expect: 'Should match the expected pretty rawScore'
         playerOneScore.times{game.scorePoint(1)}

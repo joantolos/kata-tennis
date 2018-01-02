@@ -2,6 +2,17 @@
 
 Implementation of the original kata from Code Dojo.
 
+To run the build with test coverage:
+
+    ./gradlew clean build jacocoTestReport
+    
+You will find the coverage report on _kata-tennis/build/jacoco/reports/coverage/html/index.html_
+
+You can run the Tennis class on your IDE or by console:
+
+    ./gradlew fatJar
+    java -jar build/libs/kata-tennis-all-1.0.jar
+
 ## Instructions
 
 This Kata is about implementing a simple tennis game. I came up with it while thinking about Wii tennis, where they have simplified tennis, so each set is one game.
