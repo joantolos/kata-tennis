@@ -21,10 +21,6 @@ public class Score {
         return DEUCE;
     }
 
-    private static String defaultScore(Integer playerOnePoint, Integer playerTwoPoint) {
-        return defaults[playerOnePoint] + " - " + defaults[playerTwoPoint];
-    }
-
     private static String winOrTie(Integer playerOnePoint, Integer playerTwoPoint, String playerOneName, String playerTwoName) {
         if(Math.abs(playerOnePoint - playerTwoPoint) >= 2) return win(playerOnePoint, playerTwoPoint, playerOneName, playerTwoName);
         return tie(playerOnePoint, playerTwoPoint, playerOneName, playerTwoName);
@@ -38,5 +34,9 @@ public class Score {
     private static String tie(Integer playerOnePoint, Integer playerTwoPoint, String playerOneName, String playerTwoName) {
         if(playerOnePoint>playerTwoPoint) return ADVANTAGE.replace("#playerName", playerOneName);
         return ADVANTAGE.replace("#playerName", playerTwoName);
+    }
+
+    private static String defaultScore(Integer playerOnePoint, Integer playerTwoPoint) {
+        return defaults[playerOnePoint] + " - " + defaults[playerTwoPoint];
     }
 }
