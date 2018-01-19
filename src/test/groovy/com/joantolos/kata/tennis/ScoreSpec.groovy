@@ -11,7 +11,7 @@ class ScoreSpec extends Specification {
         given: "A new game"
         Game game = new Game(new UserInterface(), "Joan", "Finner")
 
-        expect: 'Should match the expected pretty rawScore'
+        expect: 'Should match the expected pretty score'
         playerOneScore.times{game.scorePoint(1)}
         playerTwoScore.times{game.scorePoint(2)}
         game.getScore() == expectedPrettyScore
