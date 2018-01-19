@@ -18,12 +18,6 @@ public class Game {
         this.rawScore[1] = 0;
     }
 
-    public Integer scoreRandomPoint() {
-        Integer randomUserId = Luck.randomPointWinner();
-        rawScore[randomUserId - 1] = rawScore[randomUserId - 1] + 1;
-        return randomUserId;
-    }
-
     public void scorePoint(Integer playerId) {
         rawScore[playerId - 1] = rawScore[playerId - 1] + 1;
     }
@@ -42,5 +36,11 @@ public class Game {
             }
             ui.print("Score: " + getScore());
         } while (!getScore().startsWith("Win"));
+    }
+
+    public Integer scoreRandomPoint() {
+        Integer randomUserId = Luck.randomPointWinner();
+        rawScore[randomUserId - 1] = rawScore[randomUserId - 1] + 1;
+        return randomUserId;
     }
 }
