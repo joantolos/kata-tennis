@@ -18,25 +18,24 @@ public class Game {
         this.rawScore[1] = 0;
     }
 
+    public void start() {
+        do {
+            ui.print("Point " + (this.scoreRandomPoint() == 1 ? playerOneName : playerTwoName));
+            ui.print("Score: " + this.getScore());
+        } while (!getScore().startsWith("Win"));
+    }
+
+    public Integer scoreRandomPoint() {
+        Integer randomUserId = Luck.randomPointWinner();
+        this.scorePoint(randomUserId);
+        return randomUserId;
+    }
+
     public void scorePoint(Integer playerId) {
         rawScore[playerId - 1] = rawScore[playerId - 1] + 1;
     }
 
     public String getScore() {
         return Score.calculate(rawScore[0], rawScore[1], playerOneName, playerTwoName);
-    }
-
-    public void start() {
-        do {
-            Integer winnerPointPlayerId = scoreRandomPoint();
-            ui.print("Point " + (winnerPointPlayerId == 1 ? playerOneName : playerTwoName));
-            ui.print("Score: " + getScore());
-        } while (!getScore().startsWith("Win"));
-    }
-
-    public Integer scoreRandomPoint() {
-        Integer randomUserId = Luck.randomPointWinner();
-        rawScore[randomUserId - 1] = rawScore[randomUserId - 1] + 1;
-        return randomUserId;
     }
 }
