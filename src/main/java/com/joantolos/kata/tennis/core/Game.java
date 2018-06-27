@@ -29,11 +29,7 @@ public class Game {
     public void start() {
         do {
             Integer winnerPointPlayerId = scoreRandomPoint();
-            if (winnerPointPlayerId == 1) {
-                ui.print("Point " + playerOneName);
-            } else {
-                ui.print("Point " + playerTwoName);
-            }
+            ui.print("Point " + (winnerPointPlayerId == 1 ? playerOneName : playerTwoName));
             ui.print("Score: " + getScore());
         } while (!getScore().startsWith("Win"));
     }
